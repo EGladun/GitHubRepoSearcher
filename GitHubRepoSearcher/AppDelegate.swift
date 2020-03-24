@@ -8,14 +8,34 @@
 
 import UIKit
 
+var favoriteRep:[Repos] = []
+
+struct Repos {
+    var name: String?
+    var description: String?
+    var ownerName: String?
+    var ownerEmail: String?
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var navController: UINavigationController?
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.navController = UINavigationController(rootViewController: ViewController())
+        self.navController?.navigationBar.barTintColor = .darkGray
+        self.navController?.navigationBar.tintColor = .lightGray
+        self.navController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        self.navController?.navigationBar.isTranslucent = false
+        self.window?.rootViewController = navController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
