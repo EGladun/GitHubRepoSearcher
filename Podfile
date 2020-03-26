@@ -8,5 +8,6 @@ target 'GitHubRepoSearcher' do
   # Pods for GitHubRepoSearcher
 	pod 'Alamofire'
 	pod 'AlamofireObjectMapper'
+	pod 'RealmSwift'
 
 end
