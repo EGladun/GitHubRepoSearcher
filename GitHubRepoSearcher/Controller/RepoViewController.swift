@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import AlamofireObjectMapper
+import RealmSwift
 
 class RepoViewController: UIViewController {
     @IBOutlet var repoNameLabel: UILabel!
@@ -18,6 +19,7 @@ class RepoViewController: UIViewController {
     
     var repoName: String?
     var repoDesc: String?
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,47 +45,14 @@ class RepoViewController: UIViewController {
     }
     @IBAction func addClicked(_ sender: Any) {
         
-        var counter = 0
+        let currentRepo = RepositoryRealmModel()
+        currentRepo.name = self.repoNameLabel.text!
+        currentRepo.descriptionRep = self.repoDescLabel.text!
+        currentRepo.ownerName = self.ownerNameLabel.text!
+        currentRepo.ownerEmail = self.ownerEmailLabel.text!
         
-        if favoriteRep.count != 0 {
-            for elem in 0...(favoriteRep.count - 1) {
-                if favoriteRep[elem].name == self.repoNameLabel.text {
-                    counter += 1
-                }
-            }
-            
-            if counter != 0 {
-                print("Already in favorite")
-            } else {
-                favoriteRep.append(Repos(name: self.repoNameLabel.text, description: self.repoDescLabel.text, ownerName: self.ownerNameLabel.text, ownerEmail: self.ownerEmailLabel.text))
-            }
-        }
-        
-        
-        
-        saveToJsonFile()
-    }
-    
-    func saveToJsonFile() {
-        do {
-            var favArray: [AnyObject] = []
-            for elem in favoriteRep {
-                var repoDict: [String: AnyObject] = [:]
-                repoDict["name"] = elem.name as AnyObject?
-                repoDict["description"] = elem.description as AnyObject?
-                repoDict["ownerName"] = elem.ownerName as AnyObject?
-                repoDict["ownerEmail"] = elem.ownerEmail as AnyObject?
-                favArray.append(repoDict as AnyObject)
-            }
-            let jsonData = try JSONSerialization.data(withJSONObject: favArray, options: .prettyPrinted)
-            let fileManager = FileManager.default
-            let url = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            let jsonUrl = url.appendingPathComponent("file.json")
-            print(jsonUrl)
-            try jsonData.write(to: jsonUrl)
-        } catch  {
-            print(error)
+        try! realm.write {
+            realm.add(currentRepo)
         }
     }
-    
 }

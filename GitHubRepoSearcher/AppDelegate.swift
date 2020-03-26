@@ -8,7 +8,7 @@
 
 import UIKit
 
-var favoriteRep:[Repos] = []
+
 
 struct Repos {
     var name: String?

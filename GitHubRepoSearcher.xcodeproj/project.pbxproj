@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3597D8FF912992EC00A61F0D /* Pods_GitHubRepoSearcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCB5CE18330932E94F99E3E /* Pods_GitHubRepoSearcher.framework */; };
+		FA2E31A9242CEC460024375D /* RepositoryRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E31A8242CEC460024375D /* RepositoryRealmModel.swift */; };
 		FA65BE142428ABA000587DDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65BE132428ABA000587DDE /* AppDelegate.swift */; };
 		FA65BE162428ABA000587DDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65BE152428ABA000587DDE /* ViewController.swift */; };
 		FA65BE1B2428ABA400587DDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA65BE1A2428ABA400587DDE /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		2DCB5CE18330932E94F99E3E /* Pods_GitHubRepoSearcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubRepoSearcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7387409F456FE9150540C7 /* Pods-GitHubRepoSearcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRepoSearcher.debug.xcconfig"; path = "Target Support Files/Pods-GitHubRepoSearcher/Pods-GitHubRepoSearcher.debug.xcconfig"; sourceTree = "<group>"; };
 		EB1910BE124534DF575B361C /* Pods-GitHubRepoSearcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRepoSearcher.release.xcconfig"; path = "Target Support Files/Pods-GitHubRepoSearcher/Pods-GitHubRepoSearcher.release.xcconfig"; sourceTree = "<group>"; };
+		FA2E31A8242CEC460024375D /* RepositoryRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryRealmModel.swift; sourceTree = "<group>"; };
 		FA65BE102428ABA000587DDE /* GitHubRepoSearcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRepoSearcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA65BE132428ABA000587DDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA65BE152428ABA000587DDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				FA65BE382428C19800587DDE /* Repository.swift */,
 				FA65BE3A2428C20400587DDE /* Owner.swift */,
 				FA65BE3C2428C58400587DDE /* User.swift */,
+				FA2E31A8242CEC460024375D /* RepositoryRealmModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				FA65BE372428BE1D00587DDE /* TakenJson.swift in Sources */,
 				FA65BE302428B22B00587DDE /* FavoriteViewController.swift in Sources */,
 				FA65BE142428ABA000587DDE /* AppDelegate.swift in Sources */,
+				FA2E31A9242CEC460024375D /* RepositoryRealmModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
