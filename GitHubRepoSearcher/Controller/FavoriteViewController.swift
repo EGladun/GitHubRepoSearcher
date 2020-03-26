@@ -26,17 +26,17 @@ class FavoriteViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
 }
 
 extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoriteRep.count
+        return favoriteRepository.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as! TableViewCell
-        cell.awakeFromNib(name: favoriteRep[indexPath.row].name ?? "Nothing")
+        let rep = favoriteRepository[indexPath.row]
+        cell.awakeFromNib(name: (rep.value(forKey: "name") as? String)!)
         return cell
     }
     

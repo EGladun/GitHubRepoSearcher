@@ -7,18 +7,19 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
     @IBOutlet var searchButton: UIButton!
     @IBOutlet var favoriteButton: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .gray
         self.title = "Main"
-        
-        openJson()
         
     }
 
@@ -32,30 +33,14 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
-    func openJson() {
-        do {
-            let fileManager = FileManager.default
-            let url = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            let jsonUrl = url.appendingPathComponent("file.json")
-            print(jsonUrl)
-            let jsonReadData = try Data(contentsOf: jsonUrl)
-            
-            let parsedData = try JSONSerialization.jsonObject(with: jsonReadData, options: .mutableContainers)
-            
-            let datas = parsedData as! [[String: AnyObject]]
-            
-            for data in datas {
-                guard let name = data["name"] as? String, let description = data["description"] as? String, let ownerName = data["ownerName"] as? String, let ownerEmail = data["ownerEmail"] as? String else {continue}
-                let currentRepo = Repos(name: name, description: description, ownerName: ownerName, ownerEmail: ownerEmail)
-                favoriteRep.append(currentRepo)
-            }
-            
-        } catch {
-            print(error)
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
-        for data in favoriteRep {
-            print(data)
+        do {
+            let result = try context.fetch(FavoriteRepository.fetchRequest())
+            favoriteRepository = result as! [FavoriteRepository]
+        } catch let error as NSError {
+            print("Could not save \(error), \(error.userInfo)")
         }
     }
 }
